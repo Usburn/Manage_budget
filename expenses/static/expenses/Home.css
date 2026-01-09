@@ -125,6 +125,20 @@ main{
     flex-direction: column;
     gap: 10px;
 
+
+}
+.depenses_totales{
+    padding: 0px;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.depenses1,.autres{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .summary{
@@ -137,6 +151,12 @@ main{
 
 .form2{
     order: 3;
+}
+.month{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-sizing: border-box;
 }
     
 }
