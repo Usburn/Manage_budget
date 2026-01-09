@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-z20p$aa8tbtdtsur8&(-)@h%($85@4%#27(h4a60zdz6nbz31a
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CRSF_TRUSTED_ORIGINS=["https://managebudget-production.up.railway.app"]
 
 
 # Application definition
