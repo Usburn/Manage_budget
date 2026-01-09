@@ -1,0 +1,134 @@
+
+
+main{
+    min-height:85vh ;
+    box-sizing: border-box;
+
+}
+
+
+.depenses{
+    margin-left: 10%;
+    
+    width: 80%;
+   display: flex;
+   gap: 60px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.style_form{
+    border: 1px solid black;
+    padding: 20px;
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+}
+
+h2,h1{
+    text-align: center;
+}
+
+
+
+button{
+    border: 1px solid black;
+    background-color: rgb(47, 47, 47);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    font-size: 1.1rem;
+    width: fit-content;
+
+}
+button:hover{
+    background-color: white;
+    color: black;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+.summary{
+    border: 1px solid black;
+    padding: 20px;
+    height: fit-content;
+    font-size: 1.2rem;
+   background-color: rgb(236, 198, 198);
+   border-radius: 5px;
+}
+
+@media screen and (max-width :980px){
+
+.depenses{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.summary{
+    order: 1;
+}
+
+.form1{
+    order: 2;
+}
+
+.form2{
+    order: 3;
+}
+    
+}
+
+.depenses1,.autres{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+h3{
+    text-align: center;
+}
+
+.month .total {
+    color: rgb(91, 17, 17);
+    font-size: 1.2rem;
+    text-align: center;
+}
+.depenses_totales{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.month{
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: rgb(213, 208, 208);
+}
+.months-container{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block title%}My expenses{%endblock%}
+
+
+{% block css_files %}
+
+
+<link rel="stylesheet" href="{%static "expenses/Home.css"%}">
+{% endblock  %}
+
+{%block content%}
+
+<main>
+
+<!-- ===== FORMULAIRE DEPENSES ===== -->
+<div class="depenses">
+     
+    <form method="post" class="style_form form1">
+        <h2>Dépenses Principales</h2>
+    {% csrf_token %}
+    {{ form_depenses.as_p }}
+    <button type="submit" name="submit_depenses">
+        Enregistrer Dépenses
+    </button>
+</form>
+
+<!-- ===== FORMULAIRE AUTRES DEPENSES ===== -->
+<form method="post" class="style_form form2">
+    <h2>Autres Dépenses</h2>
+    {% csrf_token %}
+    {{ form_autres.as_p }}
+    <button type="submit" name="submit_autres">
+        Enregistrer Autres Dépenses
+    </button>
+</form>
+
+
+<section class="summary">
+
+    <h1>{{month}}</h1>
+
+    <h2>Resumé</h2>
+
+<p>Courses Mensuelles: {{depenses_mensuelles.M_Nourriture}}</p>
+
+<p>Courses Annuelles: {{total_annuel.T_Nourriture}}</p>
+
+<p> Dépenses mensuelles Totales: {{total_depenses_mensuelles}}</p>
+
+<p>Dépenses Annuelles Totales: {{Annuel_general}}</p>
+</section>
+
+
+</div>
+
+
+
+
+
+</main>
+
+
+
+{% endblock %}
