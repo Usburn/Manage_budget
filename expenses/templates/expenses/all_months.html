@@ -37,6 +37,25 @@
             <p><strong>Don:</strong> {{ month.depenses.M_Don }}</p>
             <p><strong>Loisir:</strong> {{ month.depenses.M_Loisir }}</p>
             <p><strong>Nourriture:</strong> {{ month.depenses.M_Nourriture }}</p>
+            <div class="depense1_fix" style="display:none;">
+            <p><strong>Loyer:</strong> {{ month.depenses.M_loyer }}</p>
+            <p><strong>Burnie:</strong> {{ month.depenses.M_Burnie_frais }}</p>
+            <p><strong>Scolarité:</strong> {{ month.depenses.M_Scolarite }}</p>
+            <p><strong>Assurance Auto:</strong> {{ month.depenses.M_auto_assurance }}</p>
+            <p><strong>Assurance Habitation:</strong> {{ month.depenses.M_habitation_assurance }}</p>
+            <p><strong>Fairstone:</strong> {{ month.depenses.M_Fairstone }}</p>
+            <p><strong>Internet:</strong> {{ month.depenses.M_Internet }}</p>
+            <p><strong>Electricité:</strong> {{ month.depenses.M_Electricite }}</p>
+            <p><strong>Tel Zaro:</strong> {{ month.depenses.M_Tel_Zaro }}</p>
+            <p><strong>Tel Juline:</strong> {{ month.depenses.M_Tel_Juline }}</p>
+            <p><strong>Netflix:</strong> {{ month.depenses.M_NetFlix }}</p>
+            <p><strong>Zaro Mom:</strong> {{ month.depenses.M_Zaro_mom }}</p>
+            <p><strong>Juline Family:</strong> {{ month.depenses.M_Juline_family }}</p>
+            <p><strong>Don:</strong> {{ month.depenses.M_Don }}</p>
+            </div>
+
+               <button class="btn-toggle">Toutes les dépenses</button>
+
         </div>
 
         <div class="autres">
@@ -45,7 +64,10 @@
             <p><strong>REER/CELI:</strong> {{ month.autres.reer_celi }}</p>
             <p><strong>Sol Juline:</strong> {{ month.autres.sol_juline }}</p>
             <p><strong>Assurance Collective:</strong> {{ month.autres.assurance_collective }}</p>
+            <p><strong>Frais d'utilisation:</strong> {{ month.autres.frais_utilisation }}</p>
         </div>
+
+     
 
     </div>
 </div>
@@ -54,6 +76,32 @@
 
 {% endfor %}
 </main>
+
+
+<script>
+document.querySelectorAll(".btn-toggle").forEach(button => {
+    button.addEventListener("click", function () {
+
+        // le parent .month du bouton cliqué
+        const monthDiv = this.closest(".month");
+
+        // le div à ouvrir/fermer DANS ce mois
+        const fixedBlock = monthDiv.querySelector(".depense1_fix");
+
+        if (fixedBlock.style.display === "block") {
+            // FERMÉ
+            fixedBlock.style.display = "none";
+            this.textContent = "Toutes dépenses";
+        } else {
+            // OUVERT
+            fixedBlock.style.display = "block";
+            this.textContent = "Dépenses variables";
+        }
+    });
+});
+</script>
+
+
 
 
 {%endblock%}

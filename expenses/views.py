@@ -2,7 +2,7 @@
 from django.db.models.functions import ExtractMonth, ExtractYear
 from django.db.models import Sum, FloatField
 import datetime
-from django.db.models.functions import Coalesce
+from django.db.models.functions import Coalesce, Round
 from datetime import datetime, timezone
 from django.utils import timezone as dj_timezone
 from django.shortcuts import render, redirect
@@ -85,9 +85,11 @@ def Home(request):
         M_Juline_family=Coalesce(Sum('Juline_family', output_field=FloatField()), 0.0),
         M_Don=Coalesce(Sum('Don', output_field=FloatField()), 0.0),
         M_Loisir=Coalesce(Sum('Loisir', output_field=FloatField()), 0.0),
-        M_Nourriture=Coalesce(Sum('Nourriture', output_field=FloatField()), 0.0),   
+        M_Nourriture=Round(Coalesce(Sum('Nourriture', output_field=FloatField()), 0.0),2),   
       
     )
+
+    
 
   # ---Autres  DEPENSES MENSUELLES ---
 
@@ -134,6 +136,18 @@ def Home(request):
         T_Loisir=Coalesce(Sum('Loisir', output_field=FloatField()), 0.0),
         T_Nourriture=Coalesce(Sum('Nourriture', output_field=FloatField()), 0.0), 
     )
+
+    depenses_mensuelles = {
+        k: round(v, 2) if isinstance(v, (int, float)) else v
+        for k, v in depenses_mensuelles.items()
+    }
+    total_annuel = {
+    k: round(v, 2) if isinstance(v, (int, float)) else v
+    for k, v in total_annuel.items()
+}
+
+
+
 
     total_depenses_mensuelles = (
         sum(depenses_mensuelles.values()) +
@@ -256,6 +270,12 @@ def all_months(request):
             assurance_collective=Coalesce(Sum('Assurance_Collective', output_field=FloatField()), 0.0),
             frais_utilisation=Coalesce(Sum('Frais_utilisisation', output_field=FloatField()), 0.0),
         )
+
+        depenses = {
+            k: round(v, 2) if isinstance(v, (int, float)) else v
+            for k, v in depenses.items()
+        }
+       
 
         # --- TOTAL DU MOIS ---
         total_mois = sum(depenses.values()) + sum(autres.values())
