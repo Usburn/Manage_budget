@@ -160,3 +160,8 @@ main{
 }
     
 }
+
+.btn-toggle{
+    width: 150px;
+    height: auto;
+}
