@@ -44,10 +44,8 @@ class Depenses(models.Model):
     def __str__(self):
         try:
             dt = self.date or timezone.now()
-            month_str = Months[dt.month - 1]
-            year = dt.year
-            return f"{self.date} {self.Commentaires}"
-            # return f"Dépenses {month_str} {year}"
+            return f"{dt.strftime('%d/%m/%Y')}  {self.Commentaires or ''}"
+
         
         except Exception:
             return f"Dépenses (invalid date)"
@@ -76,7 +74,7 @@ class AutresDepenses(models.Model):
             dt = self.date or timezone.now()
             month_str = Months[dt.month - 1]
             year = dt.year
-            return f"{self.date} {self.Commentaires}"
+            return f"{dt.strftime('%d/%m/%Y')}  {self.Commentaires or ''}"
             # return f"Dépenses {month_str} {year}"
         
         except Exception:

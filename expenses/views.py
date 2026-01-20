@@ -85,7 +85,7 @@ def Home(request):
         M_Juline_family=Coalesce(Sum('Juline_family', output_field=FloatField()), 0.0),
         M_Don=Coalesce(Sum('Don', output_field=FloatField()), 0.0),
         M_Loisir=Coalesce(Sum('Loisir', output_field=FloatField()), 0.0),
-        M_Nourriture=Round(Coalesce(Sum('Nourriture', output_field=FloatField()), 0.0),2),   
+        M_Nourriture=Coalesce(Sum('Nourriture', output_field=FloatField()), 0.0) 
       
     )
 
@@ -149,15 +149,15 @@ def Home(request):
 
 
 
-    total_depenses_mensuelles = (
+    total_depenses_mensuelles = round(  (
         sum(depenses_mensuelles.values()) +
         sum(autres_depenses_mensuelles.values())
-    )
+    ),2)
 
-    Annuel_general = (
+    Annuel_general = round( (
         sum(total_annuel.values()) +
         sum(autres_depenses_annuelles.values())
-    )
+    ),2)
 
     
 
@@ -186,34 +186,18 @@ def Home(request):
 
 
 
-from django.shortcuts import render
-from django.db.models import Sum, FloatField
-from django.db.models.functions import Coalesce, ExtractMonth
-from django.utils import timezone as dj_timezone
-from .models import Depenses, AutresDepenses
 
-Months = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre",
-          "Octobre", "Novembre", "Decembre"]
 
-from django.shortcuts import render
-from django.db.models import Sum, FloatField
-from django.db.models.functions import Coalesce, ExtractMonth
-from django.utils import timezone as dj_timezone
-from .models import Depenses, AutresDepenses
+
+
 
 Months = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout",
           "Septembre", "Octobre", "Novembre", "Decembre"]
 
-from django.shortcuts import render
-from django.db.models import Sum, FloatField
-from django.db.models.functions import Coalesce, ExtractMonth
-from django.utils import timezone as dj_timezone
 
-# Liste des mois en français
-Months = [
-    "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin",
-    "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"
-]
+
+
+
 import calendar
 def all_months(request):
 
@@ -278,7 +262,7 @@ def all_months(request):
        
 
         # --- TOTAL DU MOIS ---
-        total_mois = sum(depenses.values()) + sum(autres.values())
+        total_mois = round( sum(depenses.values()) + sum(autres.values()),2)
 
         # --- STRUCTURE POUR LE TEMPLATE ---
         months_data.append({
