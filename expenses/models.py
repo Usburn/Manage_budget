@@ -46,7 +46,9 @@ class Depenses(models.Model):
             dt = self.date or timezone.now()
             month_str = Months[dt.month - 1]
             year = dt.year
-            return f"Dépenses {month_str} {year}"
+            return f"{self.date} {self.Commentaires}"
+            # return f"Dépenses {month_str} {year}"
+        
         except Exception:
             return f"Dépenses (invalid date)"
         
