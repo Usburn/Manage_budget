@@ -52,13 +52,17 @@ class Depenses(models.Model):
         
 
 class AutresDepenses(models.Model):
-    date = models.DateTimeField( auto_now_add=True)
+    date = models.DateTimeField( default=timezone.now)
     slug = models.SlugField( blank=True, null=True, db_index=True)
     Fairstone = models.FloatField(blank=True, null=True)
     REER_CELI= models.FloatField(blank=True, null=True)
     Sol_Juline = models.FloatField(blank=True, null=True)
     Assurance_Collective = models.FloatField(blank=True, null=True)
     Frais_utilisisation = models.FloatField(blank=True, null=True)
+    Commentaires = models.TextField(
+        blank=True,
+        null=True
+    )
 
     def save(self, *args, **kwargs):
         dt = self.date or timezone.now()
@@ -68,14 +72,12 @@ class AutresDepenses(models.Model):
         self.slug = slugify(f"{currentMonth_string}-{currentYear}")
         super().save(*args, **kwargs)
 
-     
+    
     def __str__(self):
         try:
             dt = self.date or timezone.now()
-            month_str = Months[dt.month - 1]
-            year = dt.year
             return f"{dt.strftime('%d/%m/%Y')}  {self.Commentaires or ''}"
-            # return f"Dépenses {month_str} {year}"
+
         
         except Exception:
             return f"Dépenses (invalid date)"

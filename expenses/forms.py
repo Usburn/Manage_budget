@@ -17,13 +17,11 @@ class DepensesForm(forms.ModelForm):
 
 class AutresDepensesForm(forms.ModelForm):
     class Meta:
-        model = AutresDepenses
-        fields = [
-            "Fairstone", 
-            "REER_CELI",
-            "Sol_Juline",
-            "Assurance_Collective", 
-            "Frais_utilisisation"
-        ]
+        model = Depenses
+        exclude= ["slug"]
+       
+        widgets = {
+            "Commentaires": forms.Textarea(attrs={"rows": 3, "placeholder": "Commentaires..."}),
+        }
 
 
