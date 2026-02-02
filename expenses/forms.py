@@ -7,7 +7,7 @@ from .models import Depenses, AutresDepenses
 class DepensesForm(forms.ModelForm):
     class Meta:
         model = Depenses
-        exclude= ["date", "slug"]
+        exclude= ["slug"]
        
         widgets = {
             "Commentaires": forms.Textarea(attrs={"rows": 3, "placeholder": "Commentaires..."}),
