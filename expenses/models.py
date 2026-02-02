@@ -7,7 +7,7 @@ Months= ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout"
 
 
 class Depenses(models.Model):
-    date = models.DateTimeField( auto_now_add=True)
+    date = models.DateTimeField( default=timezone.now)
     slug = models.SlugField( blank=True, null=True, db_index=True)
     Loyer = models.IntegerField(blank=True, null=True)
     Burnie_frais= models.FloatField(blank=True, null=True)
