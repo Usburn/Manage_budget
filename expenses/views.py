@@ -182,15 +182,6 @@ def Home(request):
 
 
 
-
-
-
-
-
-
-
-
-
 Months = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout",
           "Septembre", "Octobre", "Novembre", "Decembre"]
 

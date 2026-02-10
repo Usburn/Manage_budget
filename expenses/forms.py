@@ -17,7 +17,7 @@ class DepensesForm(forms.ModelForm):
 
 class AutresDepensesForm(forms.ModelForm):
     class Meta:
-        model = Depenses
+        model = AutresDepenses
         exclude= ["slug"]
        
         widgets = {
